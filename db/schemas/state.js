@@ -15,4 +15,4 @@ const stateSchema = new Schema(
   { timestamps: { createdAt: "created_at" } }
 );
 
-module.exports = mongoose.model("state", citySchema);
+module.exports = mongoose.model("state", stateSchema);
