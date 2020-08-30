@@ -1,0 +1,58 @@
+const { state } = require("../db");
+
+const create = async (body) => {
+  try {
+    const savedstate = await state.create(body);
+
+    return savedstate;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const read = async () => {
+  try {
+    const cities = await state.read();
+
+    return cities;
+  } catch (error) {
+    throw error;
+  }
+};
+const readById = async (id) => {
+  try {
+    const wantedstate = await state.readById(id);
+
+    return wantedstate;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const update = async (id, body) => {
+  try {
+    const updatedstate = await state.update(id, body);
+
+    return updatedstate;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const remove = async (id) => {
+  try {
+    const deletedstate = await state.remove(id);
+
+    return deletedstate;
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = {
+  create,
+  read,
+  readById,
+  update,
+  remove,
+};
