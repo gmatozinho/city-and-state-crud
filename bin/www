@@ -9,7 +9,7 @@ var debug = require("debug")("city-and-state-crud:server");
 var http = require("http");
 var server;
 
-async () => {
+const startApi = async () => {
   const app = await createApp();
   /**
    * Get port from environment and store in Express.
@@ -87,3 +87,5 @@ const onListening = () => {
   console.log("Listening on " + bind);
   debug("Listening on " + bind);
 };
+
+startApi();

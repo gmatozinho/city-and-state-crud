@@ -12,7 +12,7 @@ const citySchema = new Schema(
       require: true,
     },
   },
-  { timestamps: { createdAt: "created_at" } }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("city", citySchema);
