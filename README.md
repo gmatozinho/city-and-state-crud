@@ -1,4 +1,4 @@
-# city_and_state-crud-api
+# city-and-state-crud-api
 
 Repositório contendo uma api em conteiner usando nodeJS + mongoDB com CRUD para cidades e estados
 
