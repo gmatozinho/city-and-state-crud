@@ -1,4 +1,5 @@
 const { state } = require("./schemas");
+const utils = require("../utils");
 
 const create = async (body) => {
   try {
@@ -12,9 +13,10 @@ const create = async (body) => {
   }
 };
 
-const read = async () => {
+const read = async (params, sortConfig) => {
   try {
-    const result = await state.find();
+    const filter = utils.filter.build(params);
+    const result = await state.find(filter).sort(sortConfig);
 
     return result;
   } catch (error) {

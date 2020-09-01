@@ -15,7 +15,7 @@ const createApp = async () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
-  /* app.use(cache(10)); */
+  app.use(cache(10));
 
   await mongoose
     .connect("mongodb://localhost:27017/city-and-state-crud", {

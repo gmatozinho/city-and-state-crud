@@ -1,4 +1,5 @@
 const { city } = require("./schemas");
+const utils = require("../utils");
 
 const create = async (body) => {
   try {
@@ -14,7 +15,8 @@ const create = async (body) => {
 
 const read = async () => {
   try {
-    const result = await city.find();
+    const filter = utils.filter.build(params);
+    const result = await city.find(filter).sort(sortConfig);
 
     return result;
   } catch (error) {

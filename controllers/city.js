@@ -13,6 +13,7 @@ const create = async (body) => {
 const read = async () => {
   try {
     const cities = await city.read();
+    utils.params.deleteSortParams(params);
 
     return cities;
   } catch (error) {

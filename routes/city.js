@@ -21,7 +21,7 @@ router.post("/", async function (req, res, next) {
   else res.status(201).json(response);
 });
 
-router.put("/:id", async function (req, res, next) {
+router.patch("/:id", async function (req, res, next) {
   const [error, response] = await to(city.update(req.params.id, req.body));
   if (error) res.status(400).json({ message: error.message });
   else res.status(200).json(response);
