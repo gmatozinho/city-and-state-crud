@@ -1,5 +1,6 @@
 const { state } = require("../db");
-const utils = require("./utils")
+const utils = require("../utils");
+
 const create = async (body) => {
   try {
     const savedstate = await state.create(body);
@@ -13,9 +14,9 @@ const create = async (body) => {
 const read = async (params) => {
   try {
     const sortConfig = buildSortConfig(params.sortBy, params.sortOrder);
-    utils.params.deleteSortParams(params)
+    utils.params.deleteSortParams(params);
 
-    const cities = await state.read(params,sortConfig);
+    const cities = await state.read(params, sortConfig);
 
     return cities;
   } catch (error) {
