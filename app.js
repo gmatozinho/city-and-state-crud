@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+const cors = require('cors')
 const { cache, auth } = require("./middleware");
 
 const routes = require("./routes");
@@ -15,11 +16,12 @@ const createApp = async () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
+  app.use(cors())
   app.use(auth());
   app.use(cache(10));
 
   await mongoose
-    .connect("mongodb://localhost:27017/city-and-state-crud", {
+    .connect("mongodb://db:27017/city-and-state-crud", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })

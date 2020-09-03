@@ -13,7 +13,10 @@ const create = async (body) => {
 
 const read = async (params) => {
   try {
-    const sortConfig = buildSortConfig(params.sortBy, params.sortOrder);
+    const sortConfig = utils.filter.buildSortConfig(
+      params.sortBy,
+      params.sortOrder
+    );
     utils.params.deleteSortParams(params);
 
     const cities = await state.read(params, sortConfig);
@@ -22,18 +25,6 @@ const read = async (params) => {
   } catch (error) {
     throw error;
   }
-};
-
-const buildSortConfig = (sortBy, sortOrder) => {
-  const sortConfig = {};
-  if (sortBy) {
-    if (sortOrder == "DSC") {
-      sortConfig[sortBy] = -1;
-    } else {
-      sortConfig[sortBy] = 1;
-    }
-  }
-  return sortConfig;
 };
 
 const readById = async (id) => {

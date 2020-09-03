@@ -4,7 +4,7 @@ const { city } = require("../controllers");
 const to = require("await-to-js").default;
 
 router.get("/", async function (req, res, next) {
-  const [error, response] = await to(city.read());
+  const [error, response] = await to(city.read(req.query));
   if (error) res.status(400).json({ message: error.message });
   else res.status(200).json(response);
 });

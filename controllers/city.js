@@ -11,10 +11,16 @@ const create = async (body) => {
   }
 };
 
-const read = async () => {
+const read = async (params) => {
   try {
-    const cities = await city.read();
+    const sortConfig = utils.filter.buildSortConfig(
+      params.sortBy,
+      params.sortOrder
+    );
+
     utils.params.deleteSortParams(params);
+
+    const cities = await city.read(params, sortConfig);
 
     return cities;
   } catch (error) {

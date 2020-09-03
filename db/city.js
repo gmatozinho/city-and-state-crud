@@ -13,7 +13,7 @@ const create = async (body) => {
   }
 };
 
-const read = async () => {
+const read = async (params, sortConfig) => {
   try {
     const filter = utils.filter.build(params);
     const result = await city.find(filter).sort(sortConfig);
