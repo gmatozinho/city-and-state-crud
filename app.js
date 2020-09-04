@@ -8,6 +8,7 @@ const cors = require('cors')
 const { cache, auth } = require("./middleware");
 
 const routes = require("./routes");
+const MONGO_DB_URL = process.env.MONGO_DB
 
 const createApp = async () => {
   var app = express();
@@ -21,7 +22,7 @@ const createApp = async () => {
   app.use(cache(10));
 
   await mongoose
-    .connect("mongodb://db:27017/city-and-state-crud", {
+    .connect(MONGO_DB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
