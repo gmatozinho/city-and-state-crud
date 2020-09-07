@@ -1,0 +1,23 @@
+sudo: required
+
+language: node_js
+node_js:
+  - "12.0"
+branches:
+  only:
+    - main
+before_script:
+  - npm install -g @angular/cli
+script:
+  - npm install
+  - npm test
+deploy:
+  provider: heroku
+  on:
+    branch:
+    - main
+  api_key:
+    secure: "YOUR ENCRYPTED API KEY"
+  app:
+    master: city-and-state-crud-api-server
+  message: "this is an automatic deployment by travis - CI as a result of pushing to main"
