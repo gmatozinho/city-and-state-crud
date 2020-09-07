@@ -6,7 +6,7 @@ Repositório contendo uma api em conteiner usando nodeJS + mongoDB com CRUD para
 
 * Necessário possuir docker instalado.
 
-docker-compose up
+Executar `docker-compose up` para iniciar api e banco de dados.
 
 ## Api Docs:
 
