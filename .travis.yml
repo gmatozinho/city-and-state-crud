@@ -1,21 +1,21 @@
 sudo: required
-
 language: node_js
 node_js:
-  - "12.0"
+- '12.0'
 branches:
   only:
-    - main
+  - main
 script:
-  - npm install
-  - npm test
+- npm install
+- npm test
 deploy:
   provider: heroku
   on:
     branch:
-      - main
+    - main
   api_key:
-    secure: "YOUR ENCRYPTED API KEY"
+    secure: k01yuuAiCvqonWW0HJeVGAs4KcutO9BtbCqRDceLSd5mL6egegtsFQ3Vv3HrSqUM2E5YLLz7ByJQAs/LEnCtYaA3MVHby9Dchc34qjH+fWxIb3WWyfqK9Fw4qedPL14FpdSajKNdclnLl9/6gwxMejow0oveGnPGQJra4lGphqAtPRJCiOkNfp9TQyZzpvfXAaTKXPL/kePZ4IAFQNSbwMXh3C0aKwhrmBG7ICEQLqZi6oDk0lqwKAF3Zb/MMvMx7xvwQ5QNFrMBM8cPqjV8UqzFMHFC42tXJG+g+5jxg0W1YKnecMr5aJUszBO2MQKWVfQUrpwvBrr7GbsVtkdnztMQ0eCLrqoseWhCSO7PhF8KbCaMQPJ7Kv2SmVqwjBuiNVNRT57q/8C7mF2W2d7IWSq6Rd1khDXxBeatiP6f078a6CW8uFBYT2j4y6QTREId0wt47HsZ6Yxi/AN0vJM/DyiLpyem05uk9opYR92dY9d5rMlcP5f7YVRSZnX3UHB/GRz6ZjSxg0oy/EYZoResr5GH8HTWos78/wtWNiirgSrO/+E5tbrurQgIEETwF40AbLUZs/XoFrdjEDj6925qGqNgccrrWu2KZzF8ij0C3A2j9uOEImcAYwCDfaVSplDMtFzOB8dr+aL3GZjTeO7nP136Yp5p6ouzHF2NTBn8s1o=
   app:
-    master: city-and-state-crud-api-server
-  message: "this is an automatic deployment by travis - CI as a result of pushing to main"
+    main: city-and-state-crud-api-server
+  message: this is an automatic deployment by travis - CI as a result of pushing to
+    main
