@@ -6,8 +6,6 @@ node_js:
 branches:
   only:
     - main
-before_script:
-  - npm install -g @angular/cli
 script:
   - npm install
   - npm test
@@ -15,7 +13,7 @@ deploy:
   provider: heroku
   on:
     branch:
-    - main
+      - main
   api_key:
     secure: "YOUR ENCRYPTED API KEY"
   app:
