@@ -4,13 +4,13 @@
  * Module dependencies.
  */
 
-var createApp = require("../app");
+var { app, initMongo } = require("../app");
 var debug = require("debug")("city-and-state-crud:server");
 var http = require("http");
 var server;
 
 const startApi = async () => {
-  const app = await createApp();
+  await initMongo();
   /**
    * Get port from environment and store in Express.
    */

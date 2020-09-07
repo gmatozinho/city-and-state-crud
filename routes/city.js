@@ -8,40 +8,44 @@ const {
   general: generalValidator,
 } = require("../validators");
 
-router.get("/", validate(cityValidator.getCitySchema), async (req, res) => {
-  const [error, response] = await to(cityController.read(req.query));
-  if (error) res.status(400).json({ message: error.message });
-  else res.status(200).json(response);
-});
+router.get(
+  "/",
+  validate(cityValidator.getCitySchema),
+  async (req, res, next) => {
+    const [error, response] = await to(cityController.read(req.query));
+    if (error) next(error);
+    else res.status(200).json(response);
+  }
+);
 
 router.get(
   "/:id",
   validate(generalValidator.idParamsSchema),
-  async (req, res) => {
+  async (req, res, next) => {
     const [error, response] = await to(cityController.readById(req.params.id));
-    if (error) res.status(400).json({ message: error.message });
+    if (error) next(error);
     else res.status(200).json(response);
   }
 );
 
 router.post(
   "/",
-  validate(cityValidator.createStateSchema),
-  async (req, res) => {
+  validate(cityValidator.createCitySchema),
+  async (req, res, next) => {
     const [error, response] = await to(cityController.create(req.body));
-    if (error) res.status(400).json({ message: error.message });
+    if (error) next(error);
     else res.status(201).json(response);
   }
 );
 
 router.patch(
   "/:id",
-  validate(cityValidator.updateStateSchema),
-  async (req, res) => {
+  validate(cityValidator.updateCitySchema),
+  async (req, res, next) => {
     const [error, response] = await to(
       cityController.update(req.params.id, req.body)
     );
-    if (error) res.status(400).json({ message: error.message });
+    if (error) next(error);
     else res.status(200).json(response);
   }
 );
@@ -51,7 +55,7 @@ router.delete(
   validate(generalValidator.idParamsSchema),
   async function (req, res, next) {
     const [error, response] = await to(cityController.remove(req.params.id));
-    if (error) res.status(400).json({ message: error.message });
+    if (error) next(error);
     else res.status(200).json(response);
   }
 );

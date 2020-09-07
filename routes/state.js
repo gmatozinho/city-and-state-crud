@@ -8,18 +8,22 @@ const {
   general: generalValidator,
 } = require("../validators");
 
-router.get("/", validate(stateValidator.getStateSchema), async (req, res) => {
-  const [error, response] = await to(stateController.read(req.query));
-  if (error) res.status(400).json({ message: error.message });
-  else res.status(200).json(response);
-});
+router.get(
+  "/",
+  validate(stateValidator.getStateSchema),
+  async (req, res, next) => {
+    const [error, response] = await to(stateController.read(req.query));
+    if (error) next(error);
+    else res.status(200).json(response);
+  }
+);
 
 router.get(
   "/:id",
   validate(generalValidator.idParamsSchema),
-  async (req, res) => {
+  async (req, res, next) => {
     const [error, response] = await to(stateController.readById(req.params.id));
-    if (error) res.status(400).json({ message: error.message });
+    if (error) next(error);
     else res.status(200).json(response);
   }
 );
@@ -27,9 +31,9 @@ router.get(
 router.post(
   "/",
   validate(stateValidator.createStateSchema),
-  async (req, res) => {
+  async (req, res, next) => {
     const [error, response] = await to(stateController.create(req.body));
-    if (error) res.status(400).json({ message: error.message });
+    if (error) next(error);
     else res.status(201).json(response);
   }
 );
@@ -41,7 +45,7 @@ router.patch(
     const [error, response] = await to(
       stateController.update(req.params.id, req.body)
     );
-    if (error) res.status(400).json({ message: error.message });
+    if (error) next(error);
     else res.status(200).json(response);
   }
 );
@@ -51,7 +55,7 @@ router.delete(
   validate(generalValidator.idParamsSchema),
   async function (req, res, next) {
     const [error, response] = await to(stateController.remove(req.params.id));
-    if (error) res.status(400).json({ message: error.message });
+    if (error) next(error);
     else res.status(200).json(response);
   }
 );

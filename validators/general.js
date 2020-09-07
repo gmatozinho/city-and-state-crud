@@ -1,11 +1,11 @@
 const Joi = require("joi");
 
-const getByIdSchema = {
+const idParamsSchema = {
   params: Joi.object({
     id: Joi.string().required(),
   }),
 };
 
 module.exports = {
-  getByIdSchema,
+  idParamsSchema,
 };
