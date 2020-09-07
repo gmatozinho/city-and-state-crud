@@ -10,7 +10,9 @@ var http = require("http");
 var server;
 
 const startApi = async () => {
-  await initMongo();
+  if (!global.TESTS) {
+    await initMongo();
+  }
   /**
    * Get port from environment and store in Express.
    */

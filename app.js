@@ -29,21 +29,18 @@ app.use(function (req, res, next) {
 
 app.use(errorHandler);
 
-let initMongo = async () => {};
-if (!global.TESTS) {
-  initMongo = async () => {
-    await mongoose
-      .connect(MONGO_DB_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      })
-      .then((result) => {
-        console.log("MongoDB Connected");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-}
+const initMongo = async () => {
+  await mongoose
+    .connect(MONGO_DB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then((result) => {
+      console.log("MongoDB Connected");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 module.exports = { app, initMongo };
