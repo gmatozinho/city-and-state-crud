@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/gmatozinho/city-and-state-crud-api.svg?branch=main)](https://travis-ci.org/gmatozinho/city-and-state-crud-api)
+
 # city-and-state-crud-api
 
 Repositório contendo uma api em conteiner usando nodeJS + mongoDB com CRUD para cidades e estados
