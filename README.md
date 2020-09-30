@@ -12,10 +12,10 @@ Link da API: https://city-and-state-crud-api-server.herokuapp.com/
 
 Executar `docker-compose up` para iniciar api e banco de dados.
 
-## Api Docs:
+## Documentacao da API:
 
 https://documenter.getpostman.com/view/4737860/TVCe39CQ
 
-## Repositório contendo pagina web:
+## Repositório contendo projeto web:
 
 https://github.com/gmatozinho/city-and-state-crud-webapp
